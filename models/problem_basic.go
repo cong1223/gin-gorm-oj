@@ -36,3 +36,7 @@ func (table *ProblemBasic) TableName() string {
 //	}
 //	return tx.Order("problem_basic.id DESC")
 //}
+
+func GetProblemList(keyword string) *gorm.DB {
+	return DB.Model(new(ProblemBasic)).Where("title like ? OR content like ?", "%"+keyword+"%", "%"+keyword+"%")
+}

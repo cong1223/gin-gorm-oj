@@ -1,0 +1,27 @@
+info:
+  contact: {}
+paths:
+  /problem-list:
+    get:
+      description: do ping
+      parameters:
+      - description: 请输入page
+        in: query
+        name: page
+        type: integer
+      - description: 请输入page size
+        in: query
+        name: size
+        type: integer
+      - description: 请输入keyword
+        in: query
+        name: keyword
+        type: integer
+      responses:
+        "200":
+          description: '{"code":"200","data":""}'
+          schema:
+            type: string
+      tags:
+      - 公共方法
+swagger: "2.0"
