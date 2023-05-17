@@ -1,6 +1,21 @@
 info:
   contact: {}
 paths:
+  /problem-detail:
+    get:
+      description: do ping
+      parameters:
+      - description: 请输入problem identity
+        in: query
+        name: identity
+        type: string
+      responses:
+        "200":
+          description: '{"code":"200","data":""}'
+          schema:
+            type: string
+      tags:
+      - 公共方法
   /problem-list:
     get:
       description: do ping

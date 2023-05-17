@@ -16,6 +16,30 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/problem-detail": {
+            "get": {
+                "description": "do ping",
+                "tags": [
+                    "公共方法"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "请输入problem identity",
+                        "name": "identity",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\":\"200\",\"data\":\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/problem-list": {
             "get": {
                 "description": "do ping",
