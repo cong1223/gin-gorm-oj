@@ -43,4 +43,19 @@ paths:
             type: string
       tags:
       - 公共方法
+  /user-detail:
+    get:
+      description: do ping
+      parameters:
+      - description: 请输入user identity
+        in: query
+        name: identity
+        type: string
+      responses:
+        "200":
+          description: '{"code":"200","data":""}'
+          schema:
+            type: string
+      tags:
+      - 公共方法
 swagger: "2.0"

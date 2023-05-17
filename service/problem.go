@@ -77,7 +77,6 @@ func GetProblemDetail(c *gin.Context) {
 
 	data := new(models.ProblemBasic)
 
-	// DAO 查数据， 返回DB对象
 	err := models.DB.Where("identity = ?", identity).First(&data).Error
 
 	if err != nil {
@@ -91,7 +90,7 @@ func GetProblemDetail(c *gin.Context) {
 		log.Println("GetProblemDetail error", err.Error())
 		return
 	}
-	//c.String(http.StatusOK, "Get Problem List")
+
 	c.JSON(http.StatusOK, gin.H{
 		"code": 200,
 		"data": data,

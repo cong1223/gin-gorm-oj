@@ -12,6 +12,7 @@ func Router() *gin.Engine {
 	r.GET("/ping", service.Ping)
 	r.GET("/problem-list", service.GetProblemList)
 	r.GET("/problem-detail", service.GetProblemDetail)
+	r.GET("/user-detail", service.GetUserDetail)
 
 	return r
 }
