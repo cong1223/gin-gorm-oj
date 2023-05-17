@@ -16,7 +16,11 @@ paths:
       - description: 请输入keyword
         in: query
         name: keyword
-        type: integer
+        type: string
+      - description: 请输入category identity
+        in: query
+        name: category_identity
+        type: string
       responses:
         "200":
           description: '{"code":"200","data":""}'

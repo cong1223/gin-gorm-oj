@@ -37,6 +37,16 @@ func (table *ProblemBasic) TableName() string {
 //	return tx.Order("problem_basic.id DESC")
 //}
 
-func GetProblemList(keyword string) *gorm.DB {
-	return DB.Model(new(ProblemBasic)).Where("title like ? OR content like ?", "%"+keyword+"%", "%"+keyword+"%")
+func GetProblemList(keyword, categoryIdentity string) *gorm.DB {
+	tx := DB.Model(new(ProblemBasic)).
+		Preload("ProblemCategories").
+		Preload("ProblemCategories.CategoryBasic").
+		Where("title like ? OR content like ?", "%"+keyword+"%", "%"+keyword+"%")
+
+	if categoryIdentity != "" {
+		tx.Joins("LEFT JOIN  problem_category pc on pc.problem_id = problem_basic.id").
+			Where("pc.category_id = (SELECT cb.id FROM category_basic cb WHERE identity = ?)", categoryIdentity)
+	}
+
+	return tx
 }

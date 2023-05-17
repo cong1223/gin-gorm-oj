@@ -36,9 +36,15 @@ const docTemplate = `{
                         "in": "query"
                     },
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "请输入keyword",
                         "name": "keyword",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "请输入category identity",
+                        "name": "category_identity",
                         "in": "query"
                     }
                 ],
