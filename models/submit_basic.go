@@ -23,20 +23,20 @@ func (table *SubmitBasic) TableName() string {
 	return "submit_basic"
 }
 
-//func GetSubmitList(problemIdentity, userIdentity string, status int) *gorm.DB {
-//	tx := DB.Model(new(SubmitBasic)).Preload("ProblemBasic", func(db *gorm.DB) *gorm.DB {
-//		return db.Omit("content")
-//	}).Preload("UserBasic", func(db *gorm.DB) *gorm.DB {
-//		return db.Omit("password")
-//	})
-//	if problemIdentity != "" {
-//		tx.Where("problem_identity = ? ", problemIdentity)
-//	}
-//	if userIdentity != "" {
-//		tx.Where("user_identity = ? ", userIdentity)
-//	}
-//	if status != 0 {
-//		tx.Where("status = ? ", status)
-//	}
-//	return tx.Order("submit_basic.id DESC")
-//}
+func GetSubmitList(problemIdentity, userIdentity string, status int) *gorm.DB {
+	tx := DB.Model(new(SubmitBasic)).Preload("ProblemBasic", func(db *gorm.DB) *gorm.DB {
+		return db.Omit("content")
+	}).Preload("UserBasic", func(db *gorm.DB) *gorm.DB {
+		return db.Omit("password")
+	})
+	if problemIdentity != "" {
+		tx.Where("problem_identity = ? ", problemIdentity)
+	}
+	if userIdentity != "" {
+		tx.Where("user_identity = ? ", userIdentity)
+	}
+	if status != 0 {
+		tx.Where("status = ? ", status)
+	}
+	return tx.Order("submit_basic.id DESC")
+}
